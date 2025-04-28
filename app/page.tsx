@@ -11,7 +11,7 @@ interface User {
   email: string;
 }
 
-const API_URL = "/api/users"; // 상대경로(도메인만 붙음)
+const API_URL = "http://localhost/api/users";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
