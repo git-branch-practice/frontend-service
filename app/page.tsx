@@ -11,7 +11,7 @@ interface User {
   email: string;
 }
 
-const API_URL = "http://34.64.80.52/api/users";
+const API_URL = "/api/users"; // 상대경로(도메인만 붙음)
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
