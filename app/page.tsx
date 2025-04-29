@@ -11,7 +11,7 @@ interface User {
   email: string;
 }
 
-const API_URL = "https://34.64.152.119/api/users";
+const API_URL = "/api/users";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
