@@ -36,8 +36,8 @@ jobs:
 
       - name: Upload .next/ to GCS (v1/dev/frontend)
         run: |
-          gsutil -m cp -r .next gs://${{ secrets.GCS_BUCKET_NAME }}/v1/dev/frontend/${{ github.sha }}/
+          gsutil -m cp -r .next gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
 
       - name: Update latest.txt
         run: |
-          echo "${{ github.sha }}" | gsutil cp - gs://${{ secrets.GCS_BUCKET_NAME }}/v1/dev/frontend/latest.txt
+          echo "${{ github.sha }}" | gsutil cp - gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/latest.txt
