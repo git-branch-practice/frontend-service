@@ -1,0 +1,22 @@
+name: PR CI - Frontend
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  pr-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Lint
+        run: npm run lint
+
+#      - name: Run Test
+#        run: npm run test
