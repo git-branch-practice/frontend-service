@@ -22,4 +22,5 @@ jobs:
           key: ${{ secrets.DEV_SERVER_KEY }} # 개인키 in GitHub Secret
           script: |
             echo "🚀 deploy-fe.sh 실행"
+            cd frontend-service
             bash fe-deploy.sh
