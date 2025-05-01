@@ -3,8 +3,6 @@ set -e
 
 echo "==== 프론트엔드 배포 시작 ===="
 
-cd ~/nemo
-
 # 기존 소스 삭제
 if [ -d "frontend-service" ]; then
   echo "📦 기존 frontend-service 삭제 중..."

@@ -22,4 +22,4 @@ jobs:
           key: ${{ secrets.DEV_SERVER_KEY }} # 개인키 in GitHub Secret
           script: |
             echo "🚀 deploy-fe.sh 실행"
-            bash ~/nemo/deploy/deploy-fe.sh
+            bash fe-deploy.sh
