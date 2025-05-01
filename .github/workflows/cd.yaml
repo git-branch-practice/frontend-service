@@ -2,7 +2,7 @@ name: CD - Frontend Deploy to Dev Server
 
 on:
   workflow_run:
-    workflows: ["CI - Frontend Build & Upload to GCS"]
+    workflows: ["CI - Frontend CI"]
     types:
       - completed
 
@@ -21,7 +21,12 @@ jobs:
           username: ${{ secrets.DEV_SSH_USER }} # 서버 유저
           key: ${{ secrets.DEV_SERVER_KEY }} # 개인키 in GitHub Secret
           script: |
-            cd ~/deploy/frontend
+            
+            echo "📦 기존 frontend-service 삭제 및 최신 코드 클론"
+            rm -rf frontend-service
+            git clone -b develop https://github.com/git-branch-practice/frontend-service.git
+            
+            cd frontend-service
             
             echo "🔄 서버 재시작"
             ./stop.sh
