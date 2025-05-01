@@ -35,4 +35,4 @@ pm2 save
 pm2 status
 
 echo "✅ 프론트엔드 배포 완료"
-# 더미
+# 더미1

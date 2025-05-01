@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="66ea85c6-5280-4594-9c45-ad9917cc6791" name="Changes" comment="feat: add dev-cd.yaml">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/cd.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/cd.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fe-deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/fe-deploy.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
