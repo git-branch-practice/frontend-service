@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ea85c6-5280-4594-9c45-ad9917cc6791" name="Changes" comment="feat: add dev-cd.yaml">
-      <change afterPath="$PROJECT_DIR$/deploy/rollback.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/start.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/stop.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/validate.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/dev-cd.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/dev-cd.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="66ea85c6-5280-4594-9c45-ad9917cc6791" name="Changes" comment="feat: add dev-cd.yaml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +161,7 @@
       <workItem from="1745477441922" duration="6089000" />
       <workItem from="1745814920347" duration="1068000" />
       <workItem from="1745824638256" duration="17778000" />
-      <workItem from="1746065528145" duration="2885000" />
+      <workItem from="1746065528145" duration="3336000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add dev-cd.yaml">
       <option name="closed" value="true" />
