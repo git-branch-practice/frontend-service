@@ -34,6 +34,9 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
 
+      - name: Debug print
+        run: echo "BUCKET = ${{ secrets.GCS_BUCKET }}"
+
       - name: Upload .next/ to GCS (v1/dev/frontend)
         run: |
           gsutil -m cp -r .next gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
