@@ -21,22 +21,5 @@ jobs:
           username: ${{ secrets.DEV_SSH_USER }} # 서버 유저
           key: ${{ secrets.DEV_SERVER_KEY }} # 개인키 in GitHub Secret
           script: |
-            
-            echo "📦 기존 frontend-service 삭제 및 최신 코드 클론"
-            rm -rf frontend-service
-            git clone -b develop https://github.com/git-branch-practice/frontend-service.git
-            
-            cd frontend-service
-            
-            echo "🔄 서버 재시작"
-            ./stop.sh
-            ./start.sh
-
-            echo "🩺 헬스체크 진행"
-            ./validate.sh || {
-              echo "❌ 헬스체크 실패 → 롤백 시작"
-              ./rollback.sh
-              exit 1
-            }
-
-            echo "✅ 배포 성공"
+            echo "🚀 deploy-fe.sh 실행"
+            bash ~/nemo/deploy/deploy-fe.sh
