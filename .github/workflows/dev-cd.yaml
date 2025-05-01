@@ -1,0 +1,56 @@
+name: CD - Frontend Deploy to Dev Server
+
+on:
+  workflow_run:
+    workflows: ["CI - Frontend Build & Upload to GCS"]
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+
+    steps:
+      - name: Checkout cloud repo (scripts 포함)
+        uses: actions/checkout@v3
+
+      - name: Read latest SHA from GCS
+        id: latest
+        run: |
+          gsutil cp gs://${{ secrets.GCS_BUCKET_NAME }}/v1/dev/frontend/latest.txt latest.txt
+          echo "sha=$(cat latest.txt)" >> $GITHUB_OUTPUT
+
+      - name: SSH into Dev Server and Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DEV_SSH_HOST }} # 서버 IP
+          username: ${{ secrets.DEV_SSH_USER }} # 서버 유저
+          key: ${{ secrets.DEV_SERVER_KEY }} # 개인키 in GitHub Secret
+          script: |
+            echo "📦 최신 SHA: ${{ steps.latest.outputs.sha }}"
+
+            export GCS_BUCKET=${{ secrets.GCS_BUCKET_NAME }}
+            export SHA=${{ steps.latest.outputs.sha }}
+
+            cd ~/deploy/frontend
+
+            echo "🧼 기존 .next 백업"
+            rm -rf .next-prev
+            mv .next .next-prev || true
+
+            echo "⬇️ GCS에서 .next 다운로드"
+            gsutil -m cp -r gs://$GCS_BUCKET/v1/dev/frontend/$SHA/.next .
+
+            echo "🔄 서버 재시작"
+            ./stop.sh
+            ./start.sh
+
+            echo "🩺 헬스체크 진행"
+            ./validate.sh || {
+              echo "❌ 헬스체크 실패 → 롤백 시작"
+              ./rollback.sh
+              exit 1
+            }
+
+            echo "✅ 배포 성공"

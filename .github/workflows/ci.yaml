@@ -1,4 +1,4 @@
-name: CI - Frontend Build & Upload to GCS (v1/dev)
+name: CI - Frontend Build & Upload to GCS 
 
 on:
   push:
@@ -44,3 +44,12 @@ jobs:
       - name: Update latest.txt
         run: |
           echo "${{ github.sha }}" | gsutil cp - gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/latest.txt
+
+      - name: Upload deploy scripts to GCS (v1/dev/frontend)
+        run: |
+          gsutil cp ./deploy/start.sh gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
+          gsutil cp ./deploy/stop.sh gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
+          gsutil cp ./deploy/validate.sh gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
+          gsutil cp ./deploy/rollback.sh gs://${{ secrets.GCS_BUCKET }}/v1/dev/frontend/${{ github.sha }}/
+      
+          
